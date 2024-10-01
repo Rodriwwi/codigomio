@@ -10,7 +10,7 @@ public class Pieza {
 
     public Pieza() {
         id = "0";
-        nombre = "nada"; 
+        nombre = "null"; 
         stock = 0;
     }
 
