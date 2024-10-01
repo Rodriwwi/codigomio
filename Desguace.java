@@ -88,21 +88,23 @@ public class Desguace {
         if (bastidor == null) // si me pasan un null devuelvo null
             return null;
         for (Vehiculo v : vehiculos) { // busco en la lista de vehiculos
-            if (v.getBastidor().equals(bastidor)) 
+            if (v != null){
+                if (v.getBastidor().equals(bastidor)) 
                 return v; // si lo encuentro lo devuelvo
+            }
         }
         return null; //sino devuelvo null
     }
 
     public boolean addPiezaVehiculo(Pieza p, Integer bastidor) {
-        Iterator<Vehiculo> it = vehiculos.iterator();
-        while (it.hasNext()) {
-            Vehiculo aux = (Vehiculo) it.next();
-            if (aux.getBastidor().equals(bastidor)) {
-                for (Pieza pieza : aux.getPiezas()) {
-                    if (pieza.getId().equals(p.getId())) {
-                        pieza.setStock(pieza.getStock() + 1);
-                        return true;
+        for (Vehiculo v : vehiculos){
+            if (v.getBastidor().equals(bastidor)){
+                for (Pieza pi : v.getPiezas()){
+                    if (pi != null){
+                        if (pi.getId().equals(pi.getId())){
+                            pi.setStock(pi.getStock()+1);
+                            return true;
+                        }
                     }
                 }
             }
@@ -111,52 +113,14 @@ public class Desguace {
     }
 
     public Pieza getPiezaVehiculo(String idP, Integer bastidor) {
-        if (idP == null || bastidor == null)
-            return null; // comprobacion de que no me pasa null
+        if (idP == null || bastidor == null) return null; // comprobacion de que no me pasas un null
         Vehiculo ve = getVehiculoBastidor(bastidor); // recupero vehiculo
         if (ve == null) return null;
         for (Pieza p : ve.getPiezas()) { // busca piezas en la lista
-            if (idP.equals(p.getId()))
-                return p; // si la encuentra la devuelve
+            if (p != null){
+                if (idP.equals(p.getId())) return p; // si la encuentra la devuelve
+            }
         }
         return null; // sino devuelve null
     }
 }
-
-/*
- * boolean enc = false;
- * Iterator<Vehiculo> it = vehiculos.iterator();
- * while (it.hasNext() & !enc) {
- * Vehiculo aux = (Vehiculo) it.next();
- * if (aux.getBastidor().equals(bastidor)) {
- * int i = 0;
- * while (i < aux.getPiezas().length) {
- * if (aux.getPiezas()[i].getId() == idP){
- * return aux.getPiezas()[i];
- * }
- * else
- * {
- * i++;
- * }
- * }
- * }
- * }
- * return null;
- * }
- */
-
-/*
- * if (idP != null && bastidor != null && bastidor != 0) {
- * for (Vehiculo v : vehiculos) {
- * if (v.getBastidor().equals(bastidor)) {
- * for (Pieza p : v.getPiezas()) {
- * if (p.getId().equals(idP))
- * return p;
- * }
- * }
- * }
- * return null;
- * }
- * return null;
- * }
- */
