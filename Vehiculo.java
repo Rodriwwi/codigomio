@@ -26,7 +26,7 @@ public class Vehiculo {
         bastidor = new Integer(0);
     }
 
-    public Vehiculo(String ma, String mo, Persona pro, int size, int bas) {
+    public Vehiculo(String ma, String mo, Persona pro, int bas, int size) {
         marca = ma;
         modelo = mo;
         propietario = pro;
@@ -54,7 +54,6 @@ public class Vehiculo {
     }
 
     public boolean addPiezaV(Pieza p) {
-    if (p == null) return false;
         for (Pieza pieza : piezas) {
             if (pieza !=null && pieza.getId().equals(p.getId())) {
                 return false;
